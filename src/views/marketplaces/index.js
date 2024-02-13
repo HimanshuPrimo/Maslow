@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 // material-ui
-import { Grid, Box, Stack, Tabs, Tab, Badge } from '@mui/material'
+import { Grid, Box, Stack, Tabs, Tab, Badge, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { IconHierarchy, IconTool } from '@tabler/icons'
 
@@ -23,6 +23,7 @@ import useApi from 'hooks/useApi'
 
 // const
 import { baseURL } from 'store/constant'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -94,6 +95,7 @@ const Marketplace = () => {
         setValue(newValue)
     }
 
+    // Request for getting data of chatflows and tools
     useEffect(() => {
         getAllChatflowsMarketplacesApi.request()
         getAllToolsMarketplacesApi.request()
@@ -137,7 +139,8 @@ const Marketplace = () => {
         <>
             <MainCard sx={{ background: customization.isDarkMode ? theme.palette.common.black : '' }}>
                 <Stack flexDirection='row'>
-                    <h1>Marketplace</h1>
+                    {/* <h1>Marketplace</h1> */}
+                    <Typography variant='h1'>Marketplace</Typography>
                 </Stack>
                 <Tabs sx={{ mb: 2 }} variant='fullWidth' value={value} onChange={handleChange} aria-label='tabs'>
                     {tabItems.map((item, index) => (
@@ -228,4 +231,4 @@ const Marketplace = () => {
     )
 }
 
-export default Marketplace
+export default withAuthenticationRequired(Marketplace)

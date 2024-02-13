@@ -171,7 +171,8 @@ const AddNodes = ({ nodesData, node }) => {
                 sx={{ left: 20, top: 20 }}
                 ref={anchorRef}
                 size='small'
-                color='primary'
+                // color='primary'
+                // variant='extended'
                 aria-label='add'
                 title='Add Node'
                 onClick={handleToggle}
@@ -333,7 +334,13 @@ const AddNodes = ({ nodesData, node }) => {
                                                                                 sx={{
                                                                                     p: 0,
                                                                                     borderRadius: `${customization.borderRadius}px`,
-                                                                                    cursor: 'move'
+                                                                                    cursor: 'move',
+                                                                                    '&:hover span': {
+                                                                                        color: customization.isDarkMode ? '#FFF860 !important' : '#fff !important',
+                                                                                    },
+                                                                                    '&:hover p': {
+                                                                                        color: customization.isDarkMode ? '#fff !important' : '#d9d1d1 !important',
+                                                                                    },
                                                                                 }}
                                                                             >
                                                                                 <ListItem alignItems='center'>
@@ -342,8 +349,8 @@ const AddNodes = ({ nodesData, node }) => {
                                                                                             style={{
                                                                                                 width: 50,
                                                                                                 height: 50,
-                                                                                                borderRadius: '50%',
-                                                                                                backgroundColor: 'white'
+                                                                                                // borderRadius: '50%',
+                                                                                                backgroundColor: '#EEEEEE'
                                                                                             }}
                                                                                         >
                                                                                             <img
@@ -368,7 +375,13 @@ const AddNodes = ({ nodesData, node }) => {
                                                                                                     alignItems: 'center'
                                                                                                 }}
                                                                                             >
-                                                                                                <span>{node.label}</span>
+                                                                                                {/* <span>{node.label}</span> */}
+                                                                                                <span
+                                                                                                    style={{
+                                                                                                        color: customization.isDarkMode ? '#FFF860' : '#121D35',
+                                                                                                    }}>
+                                                                                                    {node.label}
+                                                                                                </span>
                                                                                                 &nbsp;
                                                                                                 {node.badge && (
                                                                                                     <Chip
